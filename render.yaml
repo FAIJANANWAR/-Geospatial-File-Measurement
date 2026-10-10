@@ -1,4 +1,5 @@
 services:
+  # 1. Backend Web Service (FastAPI + Docker)
   - type: web
     name: geospatial-measurement-api
     runtime: docker
@@ -19,3 +20,25 @@ services:
         value: ./processed
       - key: MAX_FILE_SIZE_MB
         value: "25"
+      - key: ALLOWED_ORIGINS
+        value: "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000"
+
+  # 2. Frontend Static Site (React + Vite)
+  - type: web
+    name: geomeasure-frontend
+    runtime: static
+    plan: free
+    region: oregon
+    branch: main
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeploy: true
+    routes:
+      # SPA rewrite rule so direct navigation or refresh returns index.html
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://geospatial-measurement-api-hxpu.onrender.com

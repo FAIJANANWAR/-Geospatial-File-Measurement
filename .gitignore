@@ -34,3 +34,10 @@ htmlcov/
 
 # Antigravity system logs
 .system_generated/
+
+# Frontend Node & Build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
