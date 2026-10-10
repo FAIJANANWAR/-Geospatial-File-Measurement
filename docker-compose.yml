@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./geospatial.db
+      - UPLOAD_DIR=./uploads
+      - PROCESSED_DIR=./processed
+      - MAX_FILE_SIZE_MB=25
+      - APP_ENV=production
+    volumes:
+      - ./uploads:/app/uploads
+      - ./processed:/app/processed
+      - ./geospatial.db:/app/geospatial.db

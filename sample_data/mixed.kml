@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Mixed Feature Collection Sample</name>
+    <description>Sample KML containing Polygon, LineString, and Point features for integration testing</description>
+    <Placemark>
+      <name>Zone Alpha (Polygon)</name>
+      <description>Polygon feature requiring area calculation</description>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -122.410,37.770,0
+              -122.400,37.770,0
+              -122.400,37.760,0
+              -122.410,37.760,0
+              -122.410,37.770,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Transit Line 1 (LineString)</name>
+      <description>LineString feature requiring length calculation</description>
+      <LineString>
+        <coordinates>
+          -122.415,37.775,0
+          -122.405,37.765,0
+          -122.395,37.755,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Station Point (Point)</name>
+      <description>Point feature with measurement NOT_REQUIRED</description>
+      <Point>
+        <coordinates>-122.408,37.768,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

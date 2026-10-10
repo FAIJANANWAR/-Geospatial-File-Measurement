@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Point Sample</name>
+    <description>Valid Point landmark feature (WGS84 EPSG:4326)</description>
+    <Placemark>
+      <name>Coit Tower Landmark</name>
+      <description>Sample point feature in San Francisco</description>
+      <Point>
+        <coordinates>-122.4058,37.8024,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

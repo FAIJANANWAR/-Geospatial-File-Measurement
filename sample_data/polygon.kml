@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Polygon Sample</name>
+    <description>Valid Polygon feature in San Francisco, CA (WGS84 EPSG:4326)</description>
+    <Placemark>
+      <name>SF Golden Gate Park Sector</name>
+      <description>Sample rectangular polygon in San Francisco</description>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -122.4800,37.7690,0
+              -122.4600,37.7690,0
+              -122.4600,37.7600,0
+              -122.4800,37.7600,0
+              -122.4800,37.7690,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

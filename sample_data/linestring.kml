@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>LineString Sample</name>
+    <description>Valid LineString path feature (WGS84 EPSG:4326)</description>
+    <Placemark>
+      <name>Embarcadero Promenade Route</name>
+      <description>Sample linear path in San Francisco along coastal avenue</description>
+      <LineString>
+        <coordinates>
+          -122.3930,37.7950,0
+          -122.3980,37.8020,0
+          -122.4050,37.8080,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

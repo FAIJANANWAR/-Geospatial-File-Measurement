@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: geospatial-measurement-api
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_URL
+        value: sqlite:///./geospatial.db
+      - key: UPLOAD_DIR
+        value: ./uploads
+      - key: PROCESSED_DIR
+        value: ./processed
+      - key: MAX_FILE_SIZE_MB
+        value: "25"

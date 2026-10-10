@@ -1,0 +1,36 @@
+# Python / virtual environment
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables & secrets
+.env
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads & Processed files
+uploads/*
+!uploads/.gitkeep
+processed/*
+!processed/.gitkeep
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Antigravity system logs
+.system_generated/
