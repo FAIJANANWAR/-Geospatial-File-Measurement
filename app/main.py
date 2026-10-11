@@ -5,6 +5,7 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+from sqlalchemy import text
 from app.config import settings
 from app.database import engine, Base
 from app.schemas import HealthResponse
@@ -19,6 +20,30 @@ logger = logging.getLogger("geospatial_api")
 
 # Create database tables automatically at startup
 Base.metadata.create_all(bind=engine)
+
+
+def auto_migrate_sqlite():
+    """Ensure all required columns exist in SQLite database even if tables pre-existed."""
+    if settings.DATABASE_URL.startswith("sqlite"):
+        try:
+            with engine.connect() as conn:
+                res = conn.execute(text("PRAGMA table_info(files)")).fetchall()
+                existing_cols = {row[1] for row in res}
+                cols_to_add = {
+                    "processed_features": "INTEGER DEFAULT 0",
+                    "successful_measurements": "INTEGER DEFAULT 0",
+                    "failed_measurements": "INTEGER DEFAULT 0",
+                    "unsupported_geometries": "INTEGER DEFAULT 0",
+                }
+                for col_name, col_type in cols_to_add.items():
+                    if col_name not in existing_cols:
+                        conn.execute(text(f"ALTER TABLE files ADD COLUMN {col_name} {col_type}"))
+                conn.commit()
+        except Exception as e:
+            logger.warning(f"Database schema auto-migration notice: {e}")
+
+
+auto_migrate_sqlite()
 
 # Initialize FastAPI Application
 app = FastAPI(
