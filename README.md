@@ -1,6 +1,17 @@
-# Geospatial File Measurement API
+# 🌍 GeoMeasure — Geospatial File Measurement Platform
 
-A production-grade Python backend API built with **FastAPI**, **GeoPandas**, **Shapely**, **PyProj**, **Fiona**, and **SQLAlchemy**. The application ingests uploaded geospatial files (`.kml` and `.zip` Shapefiles), validates dataset structures and geometry integrity, performs accurate metric geometric calculations (Polygon area in $m^2$, LineString length in $m$ / $km$), dynamically transforms geographic coordinate reference systems (CRS) to local projected systems (e.g., Universal Transverse Mercator / UTM), persists file metadata and measurement results in SQLite, and exposes documented REST APIs.
+A full-stack production-grade platform for geospatial analysis, coordinate reference system (CRS) transformations, and metric calculations on **KML** files and ESRI **Shapefile ZIP** datasets. Built with **FastAPI**, **GeoPandas**, **Shapely**, **PyProj**, **SQLite**, and a modern **React 19 + Vite + TypeScript + Tailwind CSS** dashboard interface.
+
+---
+
+## 🌐 Live Production Links
+
+| Resource | URL | Description |
+| :--- | :--- | :--- |
+| **🚀 Live Web Dashboard (Frontend)** | [https://geospatial-file-measurement-3owm.onrender.com](https://geospatial-file-measurement-3owm.onrender.com) | Interactive SaaS frontend for drag-and-drop file processing |
+| **⚡ Live Backend API** | [https://geospatial-measurement-api-hxpu.onrender.com](https://geospatial-measurement-api-hxpu.onrender.com) | FastAPI REST service deployed on Render |
+| **📖 Interactive API Docs (Swagger UI)** | [https://geospatial-measurement-api-hxpu.onrender.com/docs](https://geospatial-measurement-api-hxpu.onrender.com/docs) | OpenAPI interactive documentation and test sandbox |
+| **🩺 API Health Check** | [https://geospatial-measurement-api-hxpu.onrender.com/health](https://geospatial-measurement-api-hxpu.onrender.com/health) | Live service status monitor (`{"status": "ok"}`) |
 
 ---
 
@@ -13,6 +24,7 @@ A production-grade Python backend API built with **FastAPI**, **GeoPandas**, **S
 - **Resilient Per-Feature Processing**: Feature failures or unsupported geometry types (e.g. `Point` -> `NOT_REQUIRED`, `GeometryCollection` -> `UNSUPPORTED`) are handled gracefully without aborting remaining valid features.
 - **Security Protections**: Mitigates Zip-Slip path-traversal vulnerabilities, enforces file size limits ($25\text{ MB}$), sanitizes filenames, and uses UUID-based storage.
 - **Automated Test Suite**: 100% passing test coverage using `pytest` and `httpx`.
+- **Modern Web Dashboard**: Responsive React 19 + Vite + TypeScript UI with real-time health indicator, drag-and-drop file upload, metrics inspection table, and JSON response viewer.
 
 ---
 
@@ -20,16 +32,18 @@ A production-grade Python backend API built with **FastAPI**, **GeoPandas**, **S
 
 | Technology | Role |
 | :--- | :--- |
-| **Python 3.11+** | Primary programming language |
+| **React 19 + Vite + TypeScript** | Frontend Single-Page Application (SPA) |
+| **Tailwind CSS & Lucide Icons** | Modern SaaS UI design system |
+| **Python 3.11+** | Primary backend language |
 | **FastAPI** | High-performance async REST Web framework |
 | **Uvicorn** | ASGI web server |
 | **GeoPandas & Fiona** | Vector geospatial file IO and DataFrame handling |
 | **Shapely** | Spatial data manipulation and geometric measurements |
 | **PyProj** | Cartographic projection and coordinate transformation engine |
 | **SQLAlchemy** | SQL ORM for database persistence |
-| **SQLite** | Local relational database storage |
+| **SQLite** | Local relational database storage with auto-migration |
 | **Pydantic v2 & Pydantic Settings** | Data validation, environment settings, and OpenAPI schema generation |
-| **Pytest & HTTPX** | Automated testing and API client integration |
+| **Pytest & Vitest** | Automated backend & frontend test suites |
 
 ---
 
